@@ -9,8 +9,8 @@ import { StaticRouter } from "react-router-dom";
 import * as qs from 'qs';
 import * as serialize from 'serialize-javascript';
 
-import Main from '../Frontend/App/Page/Main/Component/Main';
-import { reducer } from '../Frontend/App/Store/reducer';
+import Main from '../Frontend/Page/Main/Component/Main';
+import { reducer } from '../Frontend/Store/reducer';
 
 const app = express();
 const config = require('../../webpack.config.js');
