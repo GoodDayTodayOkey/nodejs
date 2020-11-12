@@ -6,10 +6,12 @@ import * as webpackDevMiddleware from 'webpack-dev-middleware';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { StaticRouter } from "react-router-dom";
+import { matchPath } from "react-router";
 import * as qs from 'qs';
 import * as serialize from 'serialize-javascript';
 
-import Main from '../Frontend/Page/Main/Component/Main';
+import routes from '../Frontend/Routes/routes';
+import App from '../Frontend/App/App';
 import { reducer } from '../Frontend/Store/reducer';
 
 const app = express();
@@ -26,7 +28,9 @@ interface IServerReduxStore {
 
 const renderTemplate = async (req, res) => {
   const params = qs.parse(req.query); 
-  const initalData: IServerReduxStore = await Promise.resolve({ "data": { "counter": 5, "name": "Nike" } });
+  const initalData: IServerReduxStore = await routes.reduce((acc, route) => {
+    return matchPath(req.url, route) !== null ? route.getInitalState(req.url, params) : acc
+  }, Promise.resolve({ "data": { "counter": 5, "name": "Nike" } }));
   const store = createStore(reducer, initalData);
   const renderHtml = html => `
     <!DOCTYPE html>
@@ -46,7 +50,7 @@ const renderTemplate = async (req, res) => {
   res.end(renderHtml(ReactDomServer.renderToString(
     <StaticRouter location={req.url}>
       <Provider store={store}>
-        <Main />
+        <App />
       </Provider>
     </StaticRouter>
   )));

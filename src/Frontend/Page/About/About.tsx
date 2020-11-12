@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { block } from 'bem-cn';
 
-const b = block('task');
-const Main = () => {
-
+const b = block('about');
+const About = () => {
   return (
     <div className={b()}>
-      Hello World!
+      About
     </div>
   );
 }
 
-export default Main;
+export default About;

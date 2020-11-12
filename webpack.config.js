@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {test: /\.(ts|tsx)$/, use: 'ts-loader'},
-      {test: /\.(png|svg|jpg|gif|ico)$/, use: 'file-loader'},
+      {test: /\.(png|svg|jpg|gif|ico)$/, use: {loader:'file-loader', options: { name: '[name].[ext]', outputPath: 'images' }},},
       {test: /\.scss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']},
     ]
   },

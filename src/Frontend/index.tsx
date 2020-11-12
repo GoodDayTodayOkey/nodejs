@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
-import Main from './Page/Main/Component/Main';
+import App from './App/App';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer } from './Store/reducer';
 import { BrowserRouter } from "react-router-dom";
@@ -10,8 +10,7 @@ import { Provider } from 'react-redux';
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
 }
-
-requireAll(require.context('./', true, /\.scss$/));
+requireAll(require.context('./', true, /\.scss$|.png$/));
 
 
 export interface IReduxStore {
@@ -31,7 +30,7 @@ const store = createStore(reducer, preloadedState, composeEnhancers(applyMiddlew
 ReactDom.hydrate(
   <BrowserRouter>
     <Provider store={store}>
-        <Main/>
+        <App />
     </Provider>
   </BrowserRouter>, 
 document.getElementById('root'));

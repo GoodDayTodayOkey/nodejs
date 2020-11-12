@@ -9,5 +9,5 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,    
     "jsx": "react"
-  }
+  },
 }
