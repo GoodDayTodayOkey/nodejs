@@ -17,18 +17,13 @@ import { reducer } from 'Store/reducer';
 const app = express();
 const config = require('../../webpack.config.js');
 const compiler = webpack(config);
-interface IServerReduxStore {
-  data: {
-    counter: number;
-    name: string;
-  }
-}
+
 
 const renderTemplate = async (req, res) => {
   const params = qs.parse(req.query); 
-  const initalData: IServerReduxStore = await routes.reduce((acc, route) => {
-    return (matchPath(req.url, route) !== null) && matchPath(req.url, route).isExact ? route.getInitalState(req.url, params) : acc
-  }, Promise.resolve({ "data": { "counter": 5, "name": "Nike" } }));
+  const initalData = await routes.reduce((acc, route) => {
+    return (matchPath(req.url, route) !== null) ? route.getInitalState(req.url, params) : acc
+  }, Promise.resolve({ "mainItems": { "counter": 5, "name": "Nike" } }));
 
   const store = createStore(reducer, initalData);
   const renderHtml = html => `

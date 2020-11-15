@@ -7,11 +7,11 @@ class Api {
     });
     public getApi = ({path, params}):Promise<any> => {
         // this.instance.get(url, {params});
-        return Promise.resolve({ "data": { "counter": 6, "name": "Nike" } })
+        return Promise.resolve({ "mainItems":  {loading: false, loaded: true, data: { "counter": 6, "name": "Nike" }}  })
     }
-    public postApi = ({path, data}):Promise<any> => {
+    public postApi = ({path, params}):Promise<any> => {
         // this.instance.post(url, {data});
-        return Promise.resolve({ "data": { "counter": 5, "name": "Nike" } })
+        return Promise.resolve({ "mainItems":  {loading: false, loaded: true, data: { "counter": 6, "name": "Nike" }}   })
     }
 }
 
