@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { block } from 'bem-cn';
 import { Route, Switch } from 'react-router-dom';
-import routes from '../Routes/routes';
-import NoMatch from '../Page/NoMatch/NoMatch';
+import routes from 'Routes/routes';
+import NoMatch from 'Page/NoMatch/NoMatch';
 
 const b = block('app');
 const App = () => {

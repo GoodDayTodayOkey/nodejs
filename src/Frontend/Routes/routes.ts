@@ -1,11 +1,11 @@
-import About from '../Page/About/About';
-import Basket from '../Page/Basket/Basket';
-import Catalog from '../Page/Catalog/Catalog';
-import Main from '../Page/Main/Main';
-import Payment from '../Page/Payment/Payment';
-import Reviews from '../Page/Reviews/Reviews';
-import Goods from '../Page/Goods/Goods';
-import api from '../Api/Api'
+import About from 'Page/About/About';
+import Basket from 'Page/Basket/Basket';
+import Catalog from 'Page/Catalog/Catalog';
+import Main from 'Page/Main/Main';
+import Payment from 'Page/Payment/Payment';
+import Reviews from 'Page/Reviews/Reviews';
+import Goods from 'Page/Goods/Goods';
+import api from 'Api/Api'
 
 const routes = [
     {

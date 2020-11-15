@@ -10,15 +10,13 @@ import { matchPath } from "react-router";
 import * as qs from 'qs';
 import * as serialize from 'serialize-javascript';
 
-import routes from '../Frontend/Routes/routes';
-import App from '../Frontend/App/App';
-import { reducer } from '../Frontend/Store/reducer';
+import routes from 'Routes/routes';
+import App from 'App/App';
+import { reducer } from 'Store/reducer';
 
 const app = express();
 const config = require('../../webpack.config.js');
 const compiler = webpack(config);
-
-
 interface IServerReduxStore {
   data: {
     counter: number;
@@ -29,20 +27,21 @@ interface IServerReduxStore {
 const renderTemplate = async (req, res) => {
   const params = qs.parse(req.query); 
   const initalData: IServerReduxStore = await routes.reduce((acc, route) => {
-    return matchPath(req.url, route) !== null ? route.getInitalState(req.url, params) : acc
+    return (matchPath(req.url, route) !== null) && matchPath(req.url, route).isExact ? route.getInitalState(req.url, params) : acc
   }, Promise.resolve({ "data": { "counter": 5, "name": "Nike" } }));
+
   const store = createStore(reducer, initalData);
   const renderHtml = html => `
     <!DOCTYPE html>
     <html>
       <head>
         <meta charset="UTF-8"><title>Nodejs</title>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="http://localhost:8080/main.css">
       </head>
       <body>
         <script>window.__PRELOADED_STATE__=${serialize(store.getState())}</script>
         <div id="root">${html}</div>
-        <script src='bundle.js' defer ></script>
+        <script src='http://localhost:8080/bundle.js' defer ></script>
         </script>
       </body>
     </html>`;

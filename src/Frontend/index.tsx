@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
-import App from './App/App';
+import App from 'App/App'
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { reducer } from './Store/reducer';
+import { reducer } from 'Store/reducer';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 

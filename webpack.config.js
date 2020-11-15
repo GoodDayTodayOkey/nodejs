@@ -11,6 +11,14 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      Api: path.resolve(__dirname, "src/Frontend/Api/"),
+      App: path.resolve(__dirname, "src/Frontend/App/"),
+      Components: path.resolve(__dirname, "src/Frontend/Components/"),
+      Page: path.resolve(__dirname, "src/Frontend/Page/"),
+      Routes: path.resolve(__dirname, "src/Frontend/Routes/"),
+      Store: path.resolve(__dirname, "src/Frontend/Store/"),
+    }
   },
   module: {
     rules: [
@@ -19,5 +27,6 @@ module.exports = {
       {test: /\.scss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']},
     ]
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin()],
 };
