@@ -1,0 +1,21 @@
+{ "type": "module",
+  "compilerOptions": {
+    "removeComments": true,
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noImplicitAny": false, 
+    "baseUrl": "src",
+    "paths":{
+      "Api/*": ["Frontend/Api/*"],
+      "App/*": ["Frontend/App/*"],
+      "Components/*": ["Frontend/Components/*"],
+      "Page/*": ["Frontend/Page/*"],
+      "Routes/*": ["Frontend/Routes/*"],
+      "Store/*": ["Frontend/Store/*"],
+    },
+    "jsx": "react"
+  },
+}
