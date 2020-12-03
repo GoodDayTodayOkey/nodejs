@@ -31,12 +31,12 @@ const renderTemplate = async (req, res) => {
     <html>
       <head>
         <meta charset="UTF-8"><title>Nodejs</title>
-        <link rel="stylesheet" href="http://localhost:8080/main.css">
+        <link rel="stylesheet" href="/main.css">
       </head>
       <body>
         <script>window.__PRELOADED_STATE__=${serialize(store.getState())}</script>
         <div id="root">${html}</div>
-        <script src='http://localhost:8080/bundle.js' defer ></script>
+        <script src='/bundle.js' defer ></script>
         </script>
       </body>
     </html>`;
@@ -52,8 +52,9 @@ const renderTemplate = async (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 app.set('port', PORT);
-app.use(webpackDevMiddleware(compiler, {publicPath: config.output.publicPath, serverSideRender: true, writeToDisk: true }))
-app.use(renderTemplate);
+app.use(webpackDevMiddleware(compiler, {publicPath: config.output.publicPath, serverSideRender: true, writeToDisk: true }));
+app.use(express.static('dist'));
+app.use(renderTemplate); //добавить router для авторизации
 
 app.listen(PORT, function () {
   console.log(`Example app listening on port ${PORT}!\n`);

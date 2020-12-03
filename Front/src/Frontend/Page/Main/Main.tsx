@@ -17,7 +17,7 @@ const Main = () => {
       Main
       <button onClick={getItems} > Активировать лазеры</button>
       {mainItems.loaded &&<div>{mainItems.data.counter}</div>}
-      <img src={`images/2.png`} />
+      <img src={`/images/2.png`} />
     </div>
   );
 }
