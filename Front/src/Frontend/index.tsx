@@ -6,7 +6,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer } from 'Store/reducer';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
-import ReduxThunk from 'redux-thunk'
 import thunk from 'redux-thunk';
 
 function requireAll(requireContext) {
