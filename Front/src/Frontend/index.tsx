@@ -6,7 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer } from 'Store/reducer';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga'
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
@@ -27,8 +28,8 @@ declare global {
 const composeEnhancers = composeWithDevTools({});
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
-const store = createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(thunk)));
-
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(sagaMiddleware)));
 
 ReactDom.hydrate(
   <BrowserRouter>
