@@ -7,7 +7,8 @@ import { reducer } from 'Store/reducer';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga'
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import rootSaga from 'Store/rootSaga';
+
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
@@ -30,6 +31,7 @@ const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(sagaMiddleware)));
+sagaMiddleware.run(rootSaga);
 
 ReactDom.hydrate(
   <BrowserRouter>
@@ -38,3 +40,5 @@ ReactDom.hydrate(
     </Provider>
   </BrowserRouter>, 
 document.getElementById('root'));
+
+export default store;

@@ -1,19 +1,12 @@
-const actionCreator = (asyncTypes, createThunk) => (...args) => {
-  const thunk = createThunk(...args);
 
-  return dispatch => {
-    dispatch({ type: `${asyncTypes.name}_PENDING`});
-    return thunk.then(payload => dispatch(({
-        type: `${asyncTypes.name}_COMPLETE`,
-        payload: asyncTypes.transformPayload(payload),
-      })))
-      .catch(error => dispatch(({
-        type: `${asyncTypes.name}_ERROR`,
-        error: true,
-        payload: asyncTypes.transformPayload(error),
-      })));
-  };
-};
+
+const creator = (asyncTypes) => ({
+  sagaWatcher: asyncTypes.watcherSagaTempate({
+    type: asyncTypes.type,
+    saga: asyncTypes.sagaTempate({ api: asyncTypes.api, query: asyncTypes.query, transformPayload: asyncTypes.transformPayload }) 
+  }) ,
+  action: () => (params) => ({type: asyncTypes.type, payload: params})
+});
 
 const reducerCreator = (asyncStates) => {
   return (state = {loading: false, loaded: false, data: null}, action) => {
@@ -43,4 +36,4 @@ const reducerCreator = (asyncStates) => {
   }
 }
 
-export {actionCreator, reducerCreator};
+export {reducerCreator, creator};
