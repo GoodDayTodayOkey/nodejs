@@ -7,7 +7,7 @@ import api from 'Api/Api';
 const getMainItems = creator({
   type: GET_MAIN_ITEMS,
   query: GET_MAIN_ITEMS_QUERY,
-  watcherSagaTempate: simpleWatcherSagaTemplate,
+  watcherSagaTemplate: simpleWatcherSagaTemplate,
   sagaTemplate: simpleSagaTemplate,
   transformPayload: payload => payload.mainItems,
   api: api.graphql

@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 export const simpleSagaTemplate = ({api, query, transformPayload}) => function* simpleSaga(action) {
+   debugger;
     try {
        yield put({type: `${action.type}_PENDING`})
        const data = yield call(api, query(action.payload))

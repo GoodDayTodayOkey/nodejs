@@ -4,14 +4,11 @@ import { connect } from 'react-redux';
 
 import { block } from 'bem-cn';
 import { getMainItems } from 'Page/Main/creators/creators'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
 
 const b = block('main');
 
 const Main = (props) => {
   const {getMainItems, mainItems} = props;
-
   return (
     <div className={b()}>
       Main
