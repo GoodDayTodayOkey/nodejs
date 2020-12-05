@@ -9,7 +9,7 @@ const getMainItems = creator({
   query: GET_MAIN_ITEMS_QUERY,
   watcherSagaTempate: simpleWatcherSagaTemplate,
   sagaTemplate: simpleSagaTemplate,
-  transformPayload: payload => payload,
+  transformPayload: payload => payload.mainItems,
   api: api.graphql
 }); 
 

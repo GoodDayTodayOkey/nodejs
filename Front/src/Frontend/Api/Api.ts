@@ -11,12 +11,12 @@ class Api {
     },
   });
 
-  public post = ({path, params}):Promise<any> => {
+  public get = ({path, params}):Promise<any> => {
     // this.instance.post(url, {data});
     return Promise.resolve({ "mainItems":  {loading: false, loaded: true, data: { "counter": 6, "name": "Nike" }}   })
   }
 
-  public graphql = async (query):Promise<any> => await this.axiosInstance.post('/graphql', JSON.stringify(query)) 
+  public graphql = async query => await this.axiosInstance.post('/graphql', JSON.stringify(query)) 
 }
 
 const api = new Api();

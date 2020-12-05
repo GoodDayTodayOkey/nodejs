@@ -26,9 +26,9 @@ const mapStateToProps = (state) => ({
   mainItems: state.mainItems
 })
 
-const mapDispatchToProps = {
-  getMainItems: getMainItems.action
-}
+const mapDispatchToProps = dispatch => ({
+  getMainItems: getMainItems.action(dispatch)
+})
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

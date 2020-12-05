@@ -1,7 +1,7 @@
 import About from 'Page/About/About';
 import Basket from 'Page/Basket/Basket';
 import Catalog from 'Page/Catalog/Catalog';
-import Main from 'Page/Main/Main';
+import Main from 'Page/Main/components/Main';
 import Payment from 'Page/Payment/Payment';
 import Reviews from 'Page/Reviews/Reviews';
 import Goods from 'Page/Goods/Goods';
@@ -13,7 +13,7 @@ const routes = [
         exact: true,
         component: Main,
         getInitalState: async (path: string, params: {[key: string]: string}):Promise<any> => {
-            return await api.getApi({path, params});
+            return await api.get({path, params});
         },
     },
     {
@@ -21,7 +21,7 @@ const routes = [
         exact: true,
         component: About,
         getInitalState: async (path: string, params: {[key: string]: string}):Promise<any> => {
-            return await api.getApi({path, params});
+            return await api.get({path, params});
         },
     },
     {
@@ -29,7 +29,7 @@ const routes = [
         exact: true,
         component: Basket,
         getInitalState: async (path: string, params: {[key: string]: string}):Promise<any> => {
-            return await api.getApi({path, params});
+            return await api.get({path, params});
         },
     },
     {
@@ -37,7 +37,7 @@ const routes = [
         exact: true,
         component: Catalog,
         getInitalState: async (path: string, params: {[key: string]: string}):Promise<any> => {
-            return await api.getApi({path, params});
+            return await api.get({path, params});
         },
     },
     {
@@ -45,7 +45,7 @@ const routes = [
         exact: true,
         component: Payment,
         getInitalState: async (path: string, params: {[key: string]: string}):Promise<any> => {
-            return await api.getApi({path, params});
+            return await api.get({path, params});
         },
     },
     {
@@ -53,7 +53,7 @@ const routes = [
         exact: true,
         component: Reviews,
         getInitalState: async (path: string, params: {[key: string]: string}):Promise<any> => {
-            return await api.getApi({path, params});
+            return await api.get({path, params});
         },
     },
     {
@@ -61,7 +61,7 @@ const routes = [
         exact: true,
         component: Goods,
         getInitalState: async (path: string, params: {[key: string]: string}):Promise<any> => {
-            return await api.getApi({path, params});
+            return await api.get({path, params});
         },
     },
 ]

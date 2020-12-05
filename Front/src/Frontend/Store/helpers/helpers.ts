@@ -1,11 +1,9 @@
-
-
 const creator = (asyncTypes) => ({
   sagaWatcher: asyncTypes.watcherSagaTempate({
     type: asyncTypes.type,
-    saga: asyncTypes.sagaTempate({ api: asyncTypes.api, query: asyncTypes.query, transformPayload: asyncTypes.transformPayload }) 
+    saga: asyncTypes.sagaTemplate({ api: asyncTypes.api, query: asyncTypes.query, transformPayload: asyncTypes.transformPayload }) 
   }) ,
-  action: () => (params) => ({type: asyncTypes.type, payload: params})
+  action: (dispatch) => () => dispatch({type: asyncTypes.type, payload: asyncTypes.type})
 });
 
 const reducerCreator = (asyncStates) => {

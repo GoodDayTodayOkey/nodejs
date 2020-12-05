@@ -9,10 +9,12 @@ import { StaticRouter } from "react-router-dom";
 import { matchPath } from "react-router";
 import * as qs from 'qs';
 import * as serialize from 'serialize-javascript';
+import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-proxy-middleware';
 
 import routes from 'Routes/routes';
 import App from 'App/App';
 import { reducer } from 'Store/reducer';
+import { SchemaMetaFieldDef } from 'graphql';
 
 const app = express();
 const config = require('../../webpack.config.js');
@@ -55,6 +57,14 @@ app.set('port', PORT);
 app.use(webpackDevMiddleware(compiler, {publicPath: config.output.publicPath, serverSideRender: true, writeToDisk: true }));
 app.use(express.static('dist'));
 app.use(renderTemplate); //добавить router для авторизации
+
+app.use('/graphql', createProxyMiddleware({ 
+  target: 'http://www.example.org',
+  changeOrigin: true,
+  router: {
+    '/graphql' : 'http://localhost:3000'
+  }
+}));
 
 app.listen(PORT, function () {
   console.log(`Example app listening on port ${PORT}!\n`);
