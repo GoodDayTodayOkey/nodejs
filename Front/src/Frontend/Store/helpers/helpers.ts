@@ -1,11 +1,3 @@
-// const creator = (asyncTypes) => ({
-//   sagaWatcher: asyncTypes.watcherSagaTempate({
-//     type: asyncTypes.type,
-//     saga: asyncTypes.sagaTemplate({ api: asyncTypes.api, query: asyncTypes.query, transformPayload: asyncTypes.transformPayload }) 
-//   }) ,
-//   action: (dispatch) => (payload) => (event)=> dispatch({type: asyncTypes.type, payload, event})
-// });
-
 const creator = (asyncTypes) => {
   return ({
     sagaWatcher: asyncTypes.watcherSagaTemplate({
