@@ -3,7 +3,7 @@ const axios = require('axios');
 
 class Api {
   private axiosInstance:any =  axios.create({
-    baseURL: 'https://localost:8080/',
+    baseURL: 'http://localhost:8080',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ class Api {
     return Promise.resolve({ "mainItems":  {loading: false, loaded: true, data: { "counter": 6, "name": "Nike" }}   })
   }
 
-  public graphql = async query => await this.axiosInstance.post('/graphql', JSON.stringify(query)) 
+  public graphql = async query => await this.axiosInstance.post('/graphql', JSON.stringify({query})).then(res => res.data.data)
 }
 
 const api = new Api();

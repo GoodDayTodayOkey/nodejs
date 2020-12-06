@@ -13,8 +13,10 @@ const Main = (props) => {
     <div className={b()}>
       Main
       <button onClick={getMainItems()}>Активировать лазеры</button>
-      {mainItems.loaded &&<div>{mainItems.data.counter}</div>}
+      <div>{mainItems.data.counter}</div>
+      <div>
       <img src={`/images/2.png`} />
+      </div>
     </div>
   );
 }

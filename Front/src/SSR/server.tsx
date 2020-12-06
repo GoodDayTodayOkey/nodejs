@@ -14,7 +14,6 @@ import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-pro
 import routes from 'Routes/routes';
 import App from 'App/App';
 import { reducer } from 'Store/reducer';
-import { SchemaMetaFieldDef } from 'graphql';
 
 const app = express();
 const config = require('../../webpack.config.js');
@@ -56,16 +55,16 @@ const PORT = process.env.PORT || 8080;
 app.set('port', PORT);
 app.use(webpackDevMiddleware(compiler, {publicPath: config.output.publicPath, serverSideRender: true, writeToDisk: true }));
 app.use(express.static('dist'));
-app.use(renderTemplate); //добавить router для авторизации
-
 app.use('/graphql', createProxyMiddleware({ 
-  target: 'http://www.example.org',
+  target: 'http://localhost:3000',
   changeOrigin: true,
   router: {
-    '/graphql' : 'http://localhost:3000'
+    'http://localhost:8000/graphql' : '/graphql'
   }
 }));
-
+app.use(renderTemplate); //добавить router для авторизации
+ 
+    
 app.listen(PORT, function () {
   console.log(`Example app listening on port ${PORT}!\n`);
 });

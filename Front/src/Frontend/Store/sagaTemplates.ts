@@ -5,7 +5,7 @@ export const simpleSagaTemplate = ({api, query, transformPayload}) => function* 
        yield put({type: `${action.type}_PENDING`})
        const data = yield call(api, query(action.payload))
        const tranformedPayload = transformPayload(data)
-       yield put({type: `${action.type}_COMPLETE`, tranformedPayload})
+       yield put({type: `${action.type}_COMPLETE`, payload: tranformedPayload})
     } catch (error) {
        yield put({type: `${action.type}_ERROR`, error})
     }

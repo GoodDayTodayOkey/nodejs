@@ -6,13 +6,17 @@ import * as bodyParser from 'body-parser';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-app.use(bodyParser.json());
+app.use(express.json())     
+app.use((req, res, next) => {
+  console.log(req.url)
+  next()
+}) 
+// app.use(bodyParser.json());
 
 app.use(graphqlHTTP({
   schema: schema,
   rootValue: resolver,
-  graphiql: true
+  // graphiql: true
 }))
 
 app.listen(PORT, function () {
