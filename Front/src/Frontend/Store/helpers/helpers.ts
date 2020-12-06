@@ -7,17 +7,14 @@
 // });
 
 const creator = (asyncTypes) => {
-  debugger;
   return ({
     sagaWatcher: asyncTypes.watcherSagaTemplate({
       type: asyncTypes.type,
       saga: asyncTypes.sagaTemplate({ api: asyncTypes.api, query: asyncTypes.query, transformPayload: asyncTypes.transformPayload }) 
-    }) ,
+    }),
     action: (dispatch) => (payload) => (event)=> dispatch({type: asyncTypes.type, payload, event})
   })
 }
-
-
 
 const reducerCreator = (asyncStates) => {
   return (state = {loading: false, loaded: false, data: null}, action) => {

@@ -1,7 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 export const simpleSagaTemplate = ({api, query, transformPayload}) => function* simpleSaga(action) {
-   debugger;
     try {
        yield put({type: `${action.type}_PENDING`})
        const data = yield call(api, query(action.payload))
@@ -12,6 +11,6 @@ export const simpleSagaTemplate = ({api, query, transformPayload}) => function* 
     }
  }
 
- export const simpleWatcherSagaTemplate = ({type, saga}) => function* simpleSagaWatcher() {
+ export const simpleWatcherSagaTemplate = function* simpleSagaWatcher({type, saga}) {
    yield takeEvery(type, saga)
 }
