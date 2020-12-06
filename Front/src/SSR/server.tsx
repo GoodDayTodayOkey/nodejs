@@ -9,7 +9,8 @@ import { StaticRouter } from "react-router-dom";
 import { matchPath } from "react-router";
 import * as qs from 'qs';
 import * as serialize from 'serialize-javascript';
-import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-proxy-middleware';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+
 
 import routes from 'Routes/routes';
 import App from 'App/App';
@@ -58,9 +59,6 @@ app.use(express.static('dist'));
 app.use('/graphql', createProxyMiddleware({ 
   target: 'http://localhost:3000',
   changeOrigin: true,
-  router: {
-    'http://localhost:8000/graphql' : '/graphql'
-  }
 }));
 app.use(renderTemplate); //добавить router для авторизации
  

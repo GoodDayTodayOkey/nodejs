@@ -17,6 +17,12 @@ const reducerCreator = (asyncStates) => {
           loaded: false,
           data: state.data
         }
+      case `${asyncStates.name}_COMPLETE`:
+        return {
+          loading: false,
+          loaded: true,
+          data: action.payload
+        }
       case `${asyncStates.name}_ERROR`:
         return {
           loading: false,
@@ -24,13 +30,7 @@ const reducerCreator = (asyncStates) => {
           error: action.payload,
           data: state.data
         }
-      case `${asyncStates.name}_COMPLETE`:
-        return {
-          loading: false,
-          loaded: true,
-          data: action.payload
-        }
-      default:
+        default:
         return state
     }
   }
