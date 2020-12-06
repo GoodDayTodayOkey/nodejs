@@ -26,9 +26,11 @@ declare global {
     interface Window { __PRELOADED_STATE__: IReduxStore; }
 }
 
+
 const composeEnhancers = composeWithDevTools({});
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
+
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(sagaMiddleware)));
 sagaMiddleware.run(rootSaga);
