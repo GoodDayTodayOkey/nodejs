@@ -20,8 +20,13 @@
   },
   "homepage": "https://github.com/GoodDayTodayOkey/nodejs#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
+    "@types/react": "^17.0.0",
     "@types/webpack-env": "^1.15.3",
     "@webpack-cli/serve": "^1.0.1",
+    "antd": "^4.9.2",
     "axios": "^0.21.0",
     "bem-cn": "^3.0.1",
     "body-parser": "^1.19.0",

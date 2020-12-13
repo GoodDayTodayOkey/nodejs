@@ -15,7 +15,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
-
 import routes from 'Routes/routes';
 import App from 'App/App';
 import { reducer } from 'Store/reducer';
@@ -130,6 +129,12 @@ app.use(express.json());
 //   })
 //   (req, res);
 // });
+
+// app.use('/graphql', graphqlHTTP({
+//   schema: schema,
+//   rootValue: resolver,
+//   graphiql: true
+// }))
 
 app.use('/graphql', createProxyMiddleware({ 
   target: 'http://localhost:3000',

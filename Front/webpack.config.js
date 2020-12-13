@@ -27,10 +27,10 @@ module.exports = {
       {test: /\.(ts|tsx)$/, use: 'ts-loader'},
       {test: /\.(png|svg|jpg|gif|ico)$/, use: {loader:'file-loader', options: { name: '[name].[ext]', outputPath: 'images' }},},
       {test: /\.scss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']},
-    ]
-  },
+      {test: /\.(ttf|eot|woff|woff2)$/, use: [{loader: 'file-loader',  options: {name: 'fonts/[name].[ext]'}}]},
+]
+},
   plugins: [
-    new webpack.DefinePlugin({__isBrowser__: "true"}),
     new CleanWebpackPlugin({root: path.resolve(__dirname, 'dist')}),
     new MiniCssExtractPlugin()
   ],

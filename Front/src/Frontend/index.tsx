@@ -13,7 +13,7 @@ import rootSaga from 'Store/rootSaga';
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
 }
-requireAll(require.context('./', true, /\.scss$|.png$/));
+requireAll(require.context('./', true, /\.scss$|.png$|.svg$/));
 
 
 // export type IReduxStore {
@@ -30,7 +30,6 @@ declare global {
 const composeEnhancers = composeWithDevTools({});
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
-
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(sagaMiddleware)));
 sagaMiddleware.run(rootSaga);

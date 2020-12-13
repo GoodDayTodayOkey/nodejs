@@ -4,20 +4,30 @@ import { connect } from 'react-redux';
 
 import { block } from 'bem-cn';
 import { getMainItems } from 'Page/Main/creators/creators'
-declare const __isBrowser__: boolean;
+
+interface IProps {
+  getMainItems: any,
+  mainItems: any
+}
+
 
 const b = block('main');
-const Main = (props) => {
+const Main: React.FC<IProps> = (props) => {
   const {getMainItems, mainItems} = props;
 
-  if (typeof window === 'undefined') {
-    const [count, setCount] = React.useState(0);
-  }
+  const [count, setCount] = React.useState(0);
+  React.useEffect(() => {
+    console.log('asdasd')
+    fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+    .then(response => response.json()).then(res => console.log(res))
+  }, []);
   return (
     <div className={b()}>
       Main
       <button onClick={getMainItems()}>Активировать лазеры</button>
+      <button onClick={() => setCount(5)}>Активировать лазеры</button>
       <div>{mainItems.data.counter}</div>
+      <div>{count}</div>
       <div>
       <img src={`/images/2.png`} />
       </div>

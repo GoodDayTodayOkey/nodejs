@@ -1,0 +1,80 @@
+.header{
+    &__content{
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(8, 1fr);
+        align-items: center;
+        justify-self: end;
+    }
+
+    &__label{
+        display: grid;
+        grid-template-rows: 3fr;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    &__menu-item{
+        justify-self: center;
+    }
+
+    &__info{
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+    }
+
+    &__phone{
+        display: flex;
+        grid-row-start: 1;
+        grid-column-start: 1;
+        grid-row-end: 1;
+        grid-column-end: 4;
+        justify-self: end;
+    }
+
+    &__number{
+        grid-row-start: 1;
+        grid-column-start: 4;
+        grid-row-end: 1;
+        grid-column-end: 13;
+        justify-self: start;
+    }
+
+    &__schedule{
+        display: flex;
+        grid-row-start: 1;
+        grid-column-start: 1;
+        grid-row-end: 1;
+        grid-column-end: 3;
+        align-self: center;
+        justify-self: end;
+    }
+
+    &__text{
+        grid-row-start: 1;
+        grid-column-start: 3;
+        grid-row-end: 1;
+        grid-column-end: 13;
+        align-self: center;
+        justify-self: start;
+    }
+
+    &__image{
+        grid-row-start: 1;
+        grid-column-start: 1;
+        grid-row-end: 3;
+        grid-column-end: 1;
+        justify-self: end;
+    }
+
+    &__cart{
+        padding-left: 50px;
+        justify-self: start;
+    }
+
+    &__row_type_styled{
+        font-family: 'Kobzar KS';
+    }
+}
