@@ -13,7 +13,26 @@ interface IProps {
 
 const b = block('main');
 const Main: React.FC<IProps> = (props) => {
-  return <>Paymnet</>
+  const {getMainItems, mainItems} = props;
+
+  const [count, setCount] = React.useState(0);
+  React.useEffect(() => {
+    console.log('asdasd')
+    fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+    .then(response => response.json()).then(res => console.log(res))
+  }, []);
+  return (
+    <div className={b()}>
+      Main
+      <button onClick={getMainItems()}>Активировать лазеры</button>
+      <button onClick={() => setCount(5)}>Активировать лазеры</button>
+      <div>{mainItems.data.counter}</div>
+      <div>{count}</div>
+      <div>
+      <img src={`/images/2.png`} />
+      </div>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => ({

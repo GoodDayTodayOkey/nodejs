@@ -1,23 +1,47 @@
 import * as React from 'react';
 import { block } from 'bem-cn';
-import {Layout, Row, Col}  from 'antd';
 import {Link} from "react-router-dom";
 
-const { Header } = Layout;
 const b = block('header');
 const menu = [
   <div className={b('label')}>
-      <div className={b('image')}><img src={'/images/bouquet.png'} alt="Bouquet"/></div>
+      <div className={b('image')}><Link to="/"><img src={'/images/label.png'} alt="Bouquet"/></Link></div>
       <div className={b('descripion')} >
+      <Link to="/">
         <div className={b('row')}>Букетная</div>
-        <div className={b('row')}>Цветаева</div>
-        <div className={b('row', {type: "styled"})}>Мастерская</div>
+        <div className={b('row', {type: "styled"})}>Цветаева</div>
+        <div className={b('row')}>Мастерская</div>
+        </Link>
     </div>
   </div>,
-  <div className={b('menu-item')}><Link to="/catalog">Каталог</Link></div>,
-  <div className={b('menu-item')}><Link to="/about">О нас</Link></div>,
-  <div className={b('menu-item')}><Link to="/reviews">Отзывы</Link></div>,
-  <div className={b('menu-item')}><Link to="/payment">Оплата и доставка</Link></div>,
+  <div className={b('menu-item')}>
+    <div className={b('catalog')}>
+      <div className={b('catalog', {purpose: 'link'})} >
+        <Link to="/catalog">Каталог</Link>
+      </div>
+    </div>
+  </div>,
+  <div className={b('menu-item')}>
+    <div className={b('about')}>
+      <div className={b('about', {purpose: 'link'})} >
+        <Link to="/about">О&nbsp;нас</Link>
+      </div>
+    </div>
+  </div>,
+  <div className={b('menu-item')}>
+    <div className={b('reviews')}>
+      <div className={b('reviews', {purpose: 'link'})} >
+        <Link to="/reviews">Отзывы</Link>
+      </div>  
+    </div>
+  </div>,
+  <div className={b('menu-item')}>
+    <div className={b('payment', {purpose: 'link'})} >
+      <div className={b('payment', {purpose: 'link'})} >
+        <Link to="/payment">Оплата&nbsp;и&nbsp;доставка</Link>
+      </div>
+    </div>
+  </div>,
   <div className={b('info', { type: 'contact' })}>
     <div className={b('phone')}>
       <img src={'/images/phone.svg'} alt="Phone"/>
@@ -41,11 +65,9 @@ const menu = [
 
 const CustomHeader = () => {
   return (
-  <Header>
     <div className={b('content')}>
       {menu.map((menuItem, i ) => <React.Fragment key={i}>{menuItem}</React.Fragment>)}
     </div>
-  </Header>
   );
 }
 

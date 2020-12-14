@@ -13,7 +13,7 @@ import rootSaga from 'Store/rootSaga';
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
 }
-requireAll(require.context('./', true, /\.scss$|.png$|.svg$/));
+requireAll(require.context('./', true, /\.scss$|.png$|.jpg$|.svg$|.less$/));
 
 
 // export type IReduxStore {

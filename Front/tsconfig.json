@@ -11,6 +11,7 @@
     "paths":{
       "Api/*": ["Frontend/Api/*"],
       "App/*": ["Frontend/App/*"],
+      "Base/*": ["Frontend/Base/*"],
       "Components/*": ["Frontend/Components/*"],
       "Page/*": ["Frontend/Page/*"],
       "Routes/*": ["Frontend/Routes/*"],

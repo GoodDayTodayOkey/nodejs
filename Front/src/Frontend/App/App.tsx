@@ -16,7 +16,6 @@ const App = () => {
     <Layout className={b()}>
       <Header/>
       <Layout>
-        <Sider>Sider</Sider>
         <Content>
           <Switch>
             {routes.map(({path, exact, component: C, ...rest}) => (

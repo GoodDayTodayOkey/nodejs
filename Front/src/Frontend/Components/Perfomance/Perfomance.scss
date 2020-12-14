@@ -1,0 +1,40 @@
+.perfomance {
+  background: url('./images/main.jpg') no-repeat;
+  height: 100px;
+  background-size: 100%;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+
+  &__content{
+    grid-row-start: 6;
+    grid-row-end: 8;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    padding-left: 100px;
+  }
+
+  &__title{
+    font-family: 'Playfair Display';
+    font-size: 35px;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  &__description{
+    padding-top: 10px;
+    font-size: 20px;
+    padding-right: 70px;
+  }
+
+  &__button{
+    padding-top: 20px;
+
+    &_type_round{
+      border-radius: 5px;
+    }
+  }
+}

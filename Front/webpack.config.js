@@ -16,6 +16,7 @@ module.exports = {
     alias: {
       Api: path.resolve(__dirname, "src/Frontend/Api/"),
       App: path.resolve(__dirname, "src/Frontend/App/"),
+      Base: path.resolve(__dirname, "src/Frontend/Base/"),
       Components: path.resolve(__dirname, "src/Frontend/Components/"),
       Page: path.resolve(__dirname, "src/Frontend/Page/"),
       Routes: path.resolve(__dirname, "src/Frontend/Routes/"),
@@ -26,7 +27,15 @@ module.exports = {
     rules: [
       {test: /\.(ts|tsx)$/, use: 'ts-loader'},
       {test: /\.(png|svg|jpg|gif|ico)$/, use: {loader:'file-loader', options: { name: '[name].[ext]', outputPath: 'images' }},},
-      {test: /\.scss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']},
+      {test: /\.less$/, use: [MiniCssExtractPlugin.loader, 'css-loader', {
+        loader: "less-loader",
+        options: {
+          lessOptions: {
+            javascriptEnabled: true
+          }
+        }
+      }]},
+      {test: /\.scss$/, use: [MiniCssExtractPlugin.loader,  'css-loader', 'sass-loader']},
       {test: /\.(ttf|eot|woff|woff2)$/, use: [{loader: 'file-loader',  options: {name: 'fonts/[name].[ext]'}}]},
 ]
 },
