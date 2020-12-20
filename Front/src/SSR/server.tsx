@@ -51,8 +51,13 @@ const compiler = webpack(config);
 const renderTemplate = async (req, res) => {
   const params = qs.parse(req.query); 
   const initalData = await routes.reduce((acc, route) => {
+
+
     return (matchPath(req.url, route) !== null) ? route.getInitalState(req.url, params) : acc
   }, Promise.resolve({ "mainItems": { "counter": 5, "name": "Nike" } }));
+
+
+  
   const store = createStore(reducer, initalData);
   const renderHtml = html => `
     <!DOCTYPE html>
@@ -85,6 +90,7 @@ app.use(webpackDevMiddleware(compiler, {publicPath: config.output.publicPath, se
 app.use(cookieParser());
 app.use(express.static('dist'));
 app.use(express.json());
+
 
 // app.use('/auth', function (req, res) {
 //   passport.authenticate('auth', {session: false}, (err, user, info) => {
@@ -138,8 +144,17 @@ app.use(express.json());
 
 app.use('/graphql', createProxyMiddleware({ 
   target: 'http://localhost:3000',
+  ws: true,
   changeOrigin: true,
 }));
+
+// app.ws('/socket', function(ws, req) {
+//   ws.on('message', function(msg) {
+//     console.log(msg);
+//     ws.send('Ok!')
+//   });
+// });
+
 
 // app.use(passport.authenticate('local'))
 app.use(renderTemplate); //добавить router для авторизации
@@ -148,3 +163,9 @@ app.use(renderTemplate); //добавить router для авторизации
 app.listen(PORT, function () {
   console.log(`Example app listening on port ${PORT}!\n`);
 });
+
+// wss.on('connection', function connection(ws) {
+//   ws.on('message', (data) => {
+//     console.log(data);
+//   });
+// });

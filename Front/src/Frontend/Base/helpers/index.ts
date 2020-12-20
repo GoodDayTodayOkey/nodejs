@@ -1,6 +1,8 @@
-export const getHeightBackgroundWithImage = ({src, cb}) => {
+export const getDimensions = async ({src, cb}) => {
   const img = new Image();
   img.src = src;
-  const bgImgHeight = img.height;
-  return cb(bgImgHeight);
+  const loadImage = new Promise((resolve, reject) => {
+    img.onload = () => resolve('loaded');
+  });
+  await loadImage.then(() => {return cb({height: img.height, widgt: img.width})})
 }

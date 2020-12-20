@@ -9,7 +9,7 @@
     "noImplicitAny": false, 
     "baseUrl": "src",
     "paths":{
-      "Routes/*": ["Routes/*"],
+      "Models/*": ["models/*"],
     },
   },
 }
